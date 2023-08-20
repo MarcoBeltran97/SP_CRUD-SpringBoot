@@ -1,0 +1,22 @@
+package com.SP_CRUDSpringBoot.servicios;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.SP_CRUDSpringBoot.interfaz.PersonaInterfaz;
+import com.SP_CRUDSpringBoot.modelo.Persona;
+
+@Service
+public class PersonaServicio {
+	
+	@Autowired
+	PersonaInterfaz ipersona;
+	
+	public List<Persona> listarPersona() {
+		return ipersona.personaListarProcedure();
+	}
+	
+
+}

@@ -1,0 +1,17 @@
+package com.SP_CRUDSpringBoot.interfaz;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.SP_CRUDSpringBoot.modelo.Persona;
+//Como 2do paso, en esta clase de interfaz
+//argumentamos que nuestro proyecto trabajará usando un Framework de Spring Jpa que permite interactuar con la base de datos por medio de objetos ya definidos.
+@Repository
+public interface PersonaInterfaz extends JpaRepository<Persona, Integer> {
+	
+	/*@Query(value = "{CALL personalistar_sp ()}", nativeQuery = true)
+	List<Persona> personaListar();*/
+}

@@ -1,0 +1,43 @@
+package com.SP_CRUDSpringBoot.servicios;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.SP_CRUDSpringBoot.interfaz.PersonaInterfaz;
+import com.SP_CRUDSpringBoot.modelo.Persona;
+//Aqui armamos la estructura del CRUD
+@Service
+public class PersonaServicio {
+	
+	@Autowired
+	PersonaInterfaz ipersona;
+	
+	//Listar todos
+	public List<Persona> listarPersona() {
+		return ipersona.personaListarSP();
+	}
+	
+	//Listar por ID	
+	public Optional<Persona> getById(int id){
+		return ipersona.personaListarById_SP(id);
+	}
+	
+	//Agregar
+	public void guardarPersona(Persona persona) {
+		ipersona.personaGuardarSP(persona.getNombre(), persona.getApellido(), persona.getDni(), persona.getCorreo());
+	}
+	
+	//Actualizar
+	public void actualizarPersona(Persona persona) {
+		ipersona.personaActualizarSP(persona.getIdpersona(), persona.getNombre(), persona.getApellido(), persona.getDni(), persona.getCorreo());
+	}
+	
+	//Eliminar
+	public void eliminarPersona(int id) {
+		ipersona.personaEliminarSP(persona.getIdpersona());
+	}
+
+}

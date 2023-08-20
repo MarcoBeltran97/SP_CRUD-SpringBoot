@@ -1,0 +1,11 @@
+package com.SP_CRUDSpringBoot.interfaz;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.SP_CRUDSpringBoot.modelo.Persona;
+
+@Repository
+public interface PersonaInterfaz extends JpaRepository<Persona, Integer> {
+
+}

@@ -1,0 +1,5 @@
+package com.SP_CRUDSpringBoot.modelo;
+
+public class Persona {
+
+}

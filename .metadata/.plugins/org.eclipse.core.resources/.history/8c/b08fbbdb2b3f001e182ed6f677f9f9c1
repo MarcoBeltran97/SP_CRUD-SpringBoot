@@ -1,0 +1,50 @@
+package com.SP_CRUDSpringBoot.controlador;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.SP_CRUDSpringBoot.modelo.Persona;
+import com.SP_CRUDSpringBoot.servicios.PersonaServicio;
+//Aqui mapeamos la url donde se ejecutara el servicio
+@RestController
+@RequestMapping("/persona")
+public class PersonaControlador {
+	
+	@Autowired
+	PersonaServicio spersona;
+	
+	@GetMapping("/listado")
+	public ResponseEntity<List<Persona>> listar(){
+		List<Persona> listar=spersona.listarPersona();
+		return new ResponseEntity<>(listar, HttpStatus.OK);
+	}
+	
+	@GetMapping("/listado/{id}")
+	public ResponseEntity<Persona> viewId(@PathVariable("id") int id){
+		Optional<Persona> persona = spersona.getById(id);
+		return new ResponseEntity(persona, HttpStatus.OK);
+	}
+	
+	@PostMapping("/agregar")
+	public ResponseEntity<Persona> guardar(@RequestBody Persona persona){
+		spersona.guardarPersona(persona);
+		return new ResponseEntity("Persona Agregada", HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/actualizar")
+	public ResponseEntity<Persona> actualizar(@RequestBody Persona persona){
+		spersona.actualizarPersona(persona);
+		return new ResponseEntity("Persona Actualizada", HttpStatus.UPGRADE_REQUIRED);
+	}
+
+}

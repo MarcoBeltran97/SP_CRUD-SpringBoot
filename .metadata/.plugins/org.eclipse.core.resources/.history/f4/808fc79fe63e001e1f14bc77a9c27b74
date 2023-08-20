@@ -1,0 +1,5 @@
+package com.SP_CRUDSpringBoot.interfaz;
+
+public interface PersonaInterfaz {
+
+}
